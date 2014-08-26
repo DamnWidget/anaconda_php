@@ -33,8 +33,9 @@ class PHPCSLinter(object):
         """Execute the linting process
         """
 
+        phpcs = os.path.join(os.path.dirname(__file__), 'phpcs/scripts/phpcs')
         args = [
-            'phpcs', '--extensions=php,inc,lib,js,css', '--report=json',
+            'php', phpcs, '--extensions=php,inc,lib,js,css', '--report=json',
             '--standard={0}'.format(
                 self.settings.get('phpcs_standard', 'PRS2')
             )
@@ -64,11 +65,13 @@ class PHPCSLinter(object):
             raise RuntimeError(self.error)
 
         errors = {'E': [], 'W': [], 'V': []}
+        # phpcs errors are treated as warnings and warnings as violations
+        errors_map = {'E': 'W', 'W': 'V'}
         report = json.loads(self.output)
 
         if report['totals']['errors'] + report['totals']['warnings'] > 0:
             for error_msg in report['files'].values()[0]['messages']:
-                errors[error_msg['type'][0]].append({
+                errors[errors_map[error_msg['type'][0]]].append({
                     'line': error_msg['line'],
                     'offset': error_msg['column'],
                     'message': error_msg['message'],
