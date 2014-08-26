@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<phpunit bootstrap="src/test/php/PDepend/bootstrap.php">
+    <php>
+        <ini name="date.timezone" value="UTC" />
+	</php>
+
+    <testsuites>
+        <testsuite name="PHP Depends Test Suite">
+            <directory suffix="Test.php">src/test/php</directory>
+            <directory suffix=".phpt">src/test/php</directory>
+        </testsuite>
+	</testsuites>
+
+    <filter>
+        <whitelist addUncoveredFilesFromWhitelist="true">
+            <directory suffix=".php">src/main/php/PHP</directory>
+
+            <exclude>
+                <!-- Exclude this exotic result printer -->
+                <file>src/main/php/PDepend/DbusUI/ResultPrinter.php</file>
+            </exclude>
+        </whitelist>
+    </filter>
+</phpunit>
