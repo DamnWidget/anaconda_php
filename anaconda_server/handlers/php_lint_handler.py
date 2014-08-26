@@ -73,25 +73,22 @@ class PHPLintHandler(anaconda_handler.AnacondaHandler):
             self.uid, self.vid, PHPCSLint, settings, code, filename
         )
 
-    def _normalize(self, settings, data, linter_type='ignoreme'):
+    def phpmd(self, settings, code=None, filename=None):
+        """Run the phpmd linter
+        """
+
+        PHPMessChecker(
+            partial(self._normalize, settings),
+            self.uid, self.vid, PHPMess, settings, code, filename
+        )
+
+    def _normalize(self, settings, data):
         """Normalize linters data before to merge
         """
 
         normalized_errors = []
         for error_level, error_data in data.get('errors', {}).items():
-            ignores = settings.get('{}_ignore'.format(linter_type), [])
             for error in error_data:
-                try:
-                    if error['code'] in ignores:
-                        continue
-                except TypeError:
-                    print(
-                        'Anaconda: {0}_ignore option must be a list of '
-                        'strings but we got a {1}'.format(
-                            linter_type, str(type(ignores))
-                        )
-                    )
-
                 normalized_error = {
                     'undelrine_range': True,
                     'level': error_level,
