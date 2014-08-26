@@ -1,0 +1,77 @@
+/*
+    AnacondaPHP default settings
+*/
+{
+    /*
+        Global linter switch, set this to false to disable AnacondaPHP
+        linting completely
+    */
+    "anaconda_php_linting": true,
+
+    /*
+        Enable or disable in use linters
+    */
+    "use_phplint": true,    // php -l (linter)
+    "use_phpcs": true,      // phpcs
+    "use_phpmess": true,    // phpmd
+
+    /*
+        phpcs standard to use
+
+        setting this option you can control which coding standard to use
+        in the linting process, remmeber that you can configure it to use
+        more than one standard at once like:
+
+            'phpcs_standard': 'PSR2,Zend,PEAR'
+
+        you can also define your own standards and add them to the list
+        passing the full path to them, if you wanna know more about how
+        to create your own standards, refer yourself to the phpcs
+        documentation at:
+
+            https://github.com/squizlabs/PHP_CodeSniffer/wiki/Coding-Standard-Tutorial
+
+        note: the anaconda installed standards are:
+            MySource, PEAR, PHPCS, PSR1, PSR2, Squiz and Zend
+    */
+    "phpcs_standard": "PSR2",
+
+    /*
+        phpcs minimum severity to display
+
+        set this option to hide any severity below the configured number
+    */
+    "phpcs_severity": 1,
+
+    /*
+        phpcs_tab2spaces converts tab to spaces
+
+        most of the sniffs written for phpcs do not support usage of tabs
+        for indentation and aligment, this option makes phpcs replace any
+        tab with 4 spaces before check your files
+    */
+    "phpcs_tab2spaces": true,
+
+    /*
+        phpcs_no_warnings used to ignore warnings
+
+        if set as true, anaconda will tell phpcs to ignore warnings
+    */
+    "phpcs_no_warnings": false,
+
+    /*
+        phpcs_additional_arguments
+
+        anaconda allows you to configure whatever other option for phpcs
+        adding it to this list of options in the following format:
+
+            'phpcs_additional_arguments': ['--ignore=*tests/*']
+
+        note: refer to the phpcs documentation for a full list of
+            options and configuration parameters:
+
+                https://github.com/squizlabs/PHP_CodeSniffer/wiki
+    */
+    "phpcs_additional_arguments": [],
+
+}
