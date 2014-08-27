@@ -1,0 +1,7 @@
+Changes in 0.1.0
+================
+
+ - First working version of AnacondaPHP
+ - php -l (linting) added
+ - phpcs linting added
+ - phpmd linting added
