@@ -5,11 +5,11 @@
 import logging
 import traceback
 
-from anaconda.anaconda_server.commands.base import Command
+from commands.base import Command
 
 
-class PHPLinter(Command):
-    """Run php -l linter and return back results
+class PHPCSLinter(Command):
+    """Run phpcs linter and return back results
     """
 
     def __init__(self, callback, uid, vid, linter, settings, code, filename):
@@ -18,7 +18,7 @@ class PHPLinter(Command):
         self.linter = linter
         self.settings = settings
         self.filename = filename
-        super(PHPLinter, self).__init__(callback, uid)
+        super(PHPCSLinter, self).__init__(callback, uid)
 
     def run(self):
         """Run the command
@@ -35,6 +35,7 @@ class PHPLinter(Command):
         except Exception as error:
             logging.error(error)
             logging.debug(traceback.format_exc())
+            print(traceback.format_exc())
             self.callback({
                 'success': False,
                 'error': error,

@@ -2,7 +2,8 @@
 # Copyright (C) 2014 - Oscar Campos <oscar.campos@member.fsf.org>
 # This program is Free Software see LICENSE file for details
 
-
+import os
+import sys
 ANACONDA_PLUGIN_AVAILABLE = False
 try:
     from anaconda import anaconda as plugin
@@ -21,7 +22,12 @@ else:
 __all__ = ['ANACONDA_PLUGIN_AVAILABLE']
 
 if ANACONDA_PLUGIN_AVAILABLE:
-    from anaconda.anaconda_lib.linting.linter import LintError
-    from anaconda.anaconda_server.jsonserver import JSONHandler, start_server
+    # we need this to dont get ImportError in jsonsever
+    sys.path.append(
+        os.path.join(os.path.dirname(plugin.__file__), 'anaconda_server')
+    )
+    from anaconda.anaconda_lib.worker import Worker
+    from anaconda.anaconda_lib.callback import Callback
+    from anaconda.anaconda_lib.linting import sublime as anaconda_sublime
 
-    __all__ += ['JSONHandler', 'start_server', 'LintError']
+    __all__ += ['Worker', 'Callback', 'anaconda_sublime']

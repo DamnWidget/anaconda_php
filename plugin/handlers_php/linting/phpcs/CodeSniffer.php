@@ -816,7 +816,7 @@ class PHP_CodeSniffer
                         }
 
                         $newRef = realpath($dir.$path);
-                        
+
                         if ($newRef !== false) {
                             $ref = $newRef;
                         }
@@ -1146,7 +1146,7 @@ class PHP_CodeSniffer
      * @throws Exception If there was an error opening a directory.
      * @see    shouldProcessFile()
      */
-    public function getFilesToProcess($paths, $local=false)
+    public function getFilesToProcess($paths, $local = false)
     {
         $files = array();
 

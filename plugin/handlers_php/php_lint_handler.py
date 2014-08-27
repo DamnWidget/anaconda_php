@@ -2,15 +2,11 @@
 # Copyright (C) 2014 - Oscar Campos <oscar.campos@member.fsf.org>
 # This program is Free Software see LICENSE file for details
 
-import os
-import sys
 from functools import partial
-sys.path.append(os.path.join(os.path.dirname(__file__), '../../anaconda_lib'))
-sys.path.append(os.path.join(os.path.dirname(__file__), '../'))
-from anaconda.anaconda_lib import anaconda_handler
 
+from lib import anaconda_handler
 from linting.anaconda_phpmess import PHPMess
-from linting.anaconda_phplint import PHPlint
+from linting.anaconda_phplint import PHPLint
 from linting.anaconda_phpcslint import PHPCSLint
 from commands import PHPLinter, PHPCSLinter, PHPMessChecker
 
@@ -18,6 +14,8 @@ from commands import PHPLinter, PHPCSLinter, PHPMessChecker
 class PHPLintHandler(anaconda_handler.AnacondaHandler):
     """Handle requests to execute PHP linting commands from the JsonServer
     """
+
+    __handler_type__ = 'php_linter'
 
     def __init__(self, command, data, uid, vid, callback, debug=False):
         self.uid = uid
@@ -61,7 +59,7 @@ class PHPLintHandler(anaconda_handler.AnacondaHandler):
 
         PHPLinter(
             partial(self._normalize, settings),
-            self.uid, self.vid, PHPlint, settings, code, filename
+            self.uid, self.vid, PHPLint, settings, code, filename
         )
 
     def phpcs(self, settings, code=None, filename=None):
@@ -90,7 +88,7 @@ class PHPLintHandler(anaconda_handler.AnacondaHandler):
         for error_level, error_data in data.get('errors', {}).items():
             for error in error_data:
                 normalized_error = {
-                    'undelrine_range': True,
+                    'underline_range': True,
                     'level': error_level,
                     'message': error['message'],
                     'offset': int(error.get('offset', 0)),

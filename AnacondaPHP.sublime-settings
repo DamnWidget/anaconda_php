@@ -74,4 +74,21 @@
     */
     "phpcs_additional_arguments": [],
 
+    /*
+        phpmd ruleset
+
+        add or remove rulesets from php mess detector tool.
+        valid options are:
+
+            cleancode, codesize, controversial, design, naming, unusedcode
+
+    */
+    "phpmd_ruleset": ["naming", "unusedcode", "codesize", "cleancode"],
+
+    /*
+        phpmd additional arguments
+
+        configure to pass any additional argument to the phpmd executable
+    */
+    "phpmd_additional_arguments": []
 }

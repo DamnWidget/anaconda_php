@@ -8,13 +8,13 @@
 import os
 import subprocess
 
-from helpers import create_subprocess
+from process import spawn
 
 PIPE = subprocess.PIPE
 
 
-class PHPLinter(object):
-    """PHPLinter class for Anaconda.PHP
+class PHPLint(object):
+    """PHPLint class for Anaconda.PHP
     """
 
     def __init__(self, filename, settings):
@@ -29,9 +29,9 @@ class PHPLinter(object):
         """Execute the linting process
         """
 
-        args = ['php', '-l']
+        args = ['php', '-l', '-n', '-d dislay_errors=On -d log_errors=Off']
         args.append(self.filename)
-        proc = create_subprocess(args, stdout=PIPE, cwd=os.getcwd())
+        proc = spawn(args, stdout=PIPE, cwd=os.getcwd())
         self.output, self.error = proc.communicate()
 
     def parse_errors(self):
@@ -45,6 +45,9 @@ class PHPLinter(object):
         if not 'No syntax errors detected' in self.output:
             split_lines = self.output.splitlines()
             for i in range(len(split_lines) - 1):
+                if not split_lines[i]:
+                    continue
+
                 line_data = split_lines[i].split(':')[1].split(' on')
                 errors['E'].append({
                     'line': int(line_data[1].split(' line ')[1]),

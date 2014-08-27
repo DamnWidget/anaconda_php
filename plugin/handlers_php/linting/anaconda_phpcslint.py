@@ -12,12 +12,12 @@ try:
 except ImportError:
     import json
 
-from helpers import create_subprocess
+from process import spawn
 
 PIPE = subprocess.PIPE
 
 
-class PHPCSLinter(object):
+class PHPCSLint(object):
     """PHPCSLinter class for Anaconda.PHP
     """
 
@@ -54,7 +54,7 @@ class PHPCSLinter(object):
             args.append(arg)
 
         args.append(self.filename)
-        proc = create_subprocess(args, stdout=PIPE, cwd=os.getcwd())
+        proc = spawn(args, stdout=PIPE, cwd=os.getcwd())
         self.output, self.error = proc.communicate()
 
     def parse_errors(self):
@@ -67,7 +67,10 @@ class PHPCSLinter(object):
         errors = {'E': [], 'W': [], 'V': []}
         # phpcs errors are treated as warnings and warnings as violations
         errors_map = {'E': 'W', 'W': 'V'}
-        report = json.loads(self.output)
+        try:
+          report = json.loads(self.output)
+        except ValueError:
+          print('Cant decode JSON, string was:\n'.format(self.output))
 
         if report['totals']['errors'] + report['totals']['warnings'] > 0:
             for error_msg in report['files'].values()[0]['messages']:

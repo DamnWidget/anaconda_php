@@ -5,10 +5,10 @@
 import logging
 import traceback
 
-from anaconda.anaconda_server.commands.base import Command
+from commands.base import Command
 
 
-class PHPCSLinter(Command):
+class PHPMessChecker(Command):
     """Run phpcs linter and return back results
     """
 
@@ -18,7 +18,7 @@ class PHPCSLinter(Command):
         self.linter = linter
         self.settings = settings
         self.filename = filename
-        super(PHPCSLinter, self).__init__(callback, uid)
+        super(PHPMessChecker, self).__init__(callback, uid)
 
     def run(self):
         """Run the command
@@ -35,6 +35,7 @@ class PHPCSLinter(Command):
         except Exception as error:
             logging.error(error)
             logging.debug(traceback.format_exc())
+            print(traceback.format_exc())
             self.callback({
                 'success': False,
                 'error': error,

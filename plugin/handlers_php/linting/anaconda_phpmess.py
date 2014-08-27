@@ -8,7 +8,8 @@
 import os
 import subprocess
 
-from helpers import create_subprocess
+from process import spawn
+
 
 PIPE = subprocess.PIPE
 
@@ -41,7 +42,7 @@ class PHPMess(object):
             args.append(arg)
 
         args.append(self.filename)
-        proc = create_subprocess(args, stdout=PIPE, cwd=os.getcwd())
+        proc = spawn(args, stdout=PIPE, cwd=os.getcwd())
         self.output, self.error = proc.communicate()
 
     def parse_errors(self):
