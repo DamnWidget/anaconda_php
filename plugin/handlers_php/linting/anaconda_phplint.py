@@ -31,15 +31,12 @@ class PHPLint(object):
 
         args = ['php', '-l', '-n', '-d dislay_errors=On -d log_errors=Off']
         args.append(self.filename)
-        proc = spawn(args, stdout=PIPE, cwd=os.getcwd())
+        proc = spawn(args, stdout=PIPE, stderr=PIPE, cwd=os.getcwd())
         self.output, self.error = proc.communicate()
 
     def parse_errors(self):
         """Parse the output given by php -l
         """
-
-        if self.error is not None:
-            raise RuntimeError(self.error)
 
         errors = {'E': [], 'W': [], 'V': []}
         if not 'No syntax errors detected' in self.output:

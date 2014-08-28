@@ -5,5 +5,7 @@
 from .php_lint import PHPLinter
 from .phpcs_lint import PHPCSLinter
 from .phpmess_lint import PHPMessChecker
+from .php_cs_fixer import PHPCSFixer
 
-__all__ = ['PHPLinter', 'PHPCSLinter', 'PHPMessChecker']
+
+__all__ = ['PHPLinter', 'PHPCSLinter', 'PHPMessChecker', 'PHPCSFixer']

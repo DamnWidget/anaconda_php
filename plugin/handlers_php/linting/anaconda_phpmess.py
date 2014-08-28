@@ -42,15 +42,12 @@ class PHPMess(object):
             args.append(arg)
 
         args.append(self.filename)
-        proc = spawn(args, stdout=PIPE, cwd=os.getcwd())
+        proc = spawn(args, stdout=PIPE, stderr=PIPE, cwd=os.getcwd())
         self.output, self.error = proc.communicate()
 
     def parse_errors(self):
         """Parse the JSON output given by phpcs --report=json
         """
-
-        if self.error is not None:
-            raise RuntimeError(self.error)
 
         # phpmd errors as always trated as violations
         errors = {'E': [], 'W': [], 'V': []}

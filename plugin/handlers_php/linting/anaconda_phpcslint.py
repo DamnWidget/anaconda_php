@@ -6,6 +6,7 @@
 """
 
 import os
+import logging
 import subprocess
 try:
     import ujson as json
@@ -54,23 +55,22 @@ class PHPCSLint(object):
             args.append(arg)
 
         args.append(self.filename)
-        proc = spawn(args, stdout=PIPE, cwd=os.getcwd())
+        proc = spawn(args, stdout=PIPE, stderr=PIPE, cwd=os.getcwd())
         self.output, self.error = proc.communicate()
 
     def parse_errors(self):
         """Parse the JSON output given by phpcs --report=json
         """
 
-        if self.error is not None:
-            raise RuntimeError(self.error)
-
         errors = {'E': [], 'W': [], 'V': []}
         # phpcs errors are treated as warnings and warnings as violations
         errors_map = {'E': 'W', 'W': 'V'}
         try:
-          report = json.loads(self.output)
+            report = json.loads(self.output)
         except ValueError:
-          print('Cant decode JSON, string was:\n'.format(self.output))
+            msg = 'Cant decode JSON, string was:\n'.format(self.output)
+            logging.info(msg)
+            print(msg)
 
         if report['totals']['errors'] + report['totals']['warnings'] > 0:
             for error_msg in report['files'].values()[0]['messages']:
