@@ -90,5 +90,30 @@
 
         configure to pass any additional argument to the phpmd executable
     */
-    "phpmd_additional_arguments": []
+    "phpmd_additional_arguments": [],
+
+    /*
+        php-cs-fixer verbosity level
+
+        you can configure the verbosity level of the php-cs-fixer setting
+        the value of the `phpcs_fixer_verbosity_level`, valid values are:
+
+            v, vv, vv, q
+
+        where v|vv|vvv Increase the verbosity of messages: 1 for normal
+        output, 2 for more verbose output and 3 for debug and q oes not
+        output any message
+    */
+    "phpcs_fixer_verbosity_level": "v",
+
+    /*
+        php-cs-fix additional arguments
+
+        anaconda allows you to configure whatever option that you want to
+        use with php-cs-fixer adding it to this list in the following
+        format:
+
+            'phpcs_fixer_additional_arguments': ['--ansi']
+    */
+    "phpcs_fixer_additional_arguments": ["--no-interaction"]
 }
