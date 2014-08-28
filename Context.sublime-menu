@@ -1,0 +1,13 @@
+[
+    {
+        "caption": "Anaconda",
+        "id": "anaconda_context",
+        "children":
+        [
+            {
+                "command": "anaconda_php_fix",
+                "caption": "Fix PHP Document Style"
+            }
+        ]
+    }
+]

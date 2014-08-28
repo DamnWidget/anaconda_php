@@ -1,0 +1,3 @@
+[
+    {"command": "anaconda_php_fixer", "keys": ["super+r"]}
+]

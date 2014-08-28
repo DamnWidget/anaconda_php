@@ -1,0 +1,6 @@
+[
+    {
+        "caption": "Anaconda: Fix PHP Document Style",
+        "command": "anaconda_php_fix"
+    }
+]
