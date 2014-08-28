@@ -3,6 +3,14 @@ AnacondaPHP
 
 Anaconda.PHP adds PHP linting, PHP code standards checking and complexity/messing detector for your Sublime Text 3 that uses anaconda's engine so it does not freezes your Sublime Text 3 ever.
 
+## Supported Platforms
+
+AnacondaPHP has been tested in **OS X** and **GNU/Linux** with excelent results although the plugin is not in a mature state yet and more development and tests is required. The current status in the different platforms is:
+
+* **GNU/Linux:** *unstable*
+* **OS X:** *unstable*
+* **Windows:** *non tested*
+
 ## Dependencies
 
 1. [Anaconda](https://github.com/DamnWidget/anaconda) plugin for Sublime Text 3
