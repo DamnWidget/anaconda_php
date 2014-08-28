@@ -18,4 +18,5 @@ if anaconda_required_version > anaconda_version:
         )
     )
 
+from .commands import *
 from .listeners import *
