@@ -6,8 +6,8 @@ from functools import partial
 
 import sublime as st3_sublime
 
-from anaconda.anaconda_lib.helpers import active_view
 from .helpers import get_settings
+from anaconda.anaconda_lib.helpers import active_view
 from .anaconda_plugin import anaconda_sublime, Worker, Callback
 
 
@@ -17,6 +17,9 @@ def run_linter(view=None):
 
     if view is None:
         view = active_view()
+
+    if not get_settings(view, 'anaconda_php_linting', False):
+        return
 
     if view.file_name() in anaconda_sublime.ANACONDA['DISABLED']:
         anaconda_sublime.erase_lint_marks(view)
