@@ -10,7 +10,7 @@ Anaconda.PHP adds PHP linting, PHP code standards checking and complexity/messin
 
 ## Installation
 
-If [Anaconda](https://github.com/DamnWidget/anaconda) is not already installed you should install it using the `Palette Control`, if it is already installed, just skip to the next section
+If [Anaconda](https://github.com/DamnWidget/anaconda) is not already installed you should install it using the `Command Palette`, if it is already installed, just skip to the next section
 
 ### Install Anaconda plugin
 
