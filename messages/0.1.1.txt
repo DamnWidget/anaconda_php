@@ -1,0 +1,5 @@
+Changes in 0.1.1
+================
+
+ - Fixed Python3 support
+ - Fixed wrong imports when anaconda is installed using Package Control
