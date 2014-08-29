@@ -4,7 +4,7 @@
 
 import sublime
 
-from anaconda.anaconda_lib import helpers as anaconda_helpers
+from .anaconda_plugin import anaconda_helpers
 
 
 def get_settings(view, name, default=None):

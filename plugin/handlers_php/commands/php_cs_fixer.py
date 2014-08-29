@@ -3,6 +3,7 @@
 # This program is Free Software see LICENSE file for details
 
 import os
+import sys
 import logging
 import traceback
 import subprocess
@@ -59,10 +60,7 @@ class PHPCSFixer(Command):
 
         proc = spawn(args, stdout=PIPE, stderr=PIPE, cwd=os.getcwd())
         output, error = proc.communicate()
-        logging.info(output)
-        logging.info(error)
-
-        if error != '':
-            raise RuntimeError(error)
+        if sys.version_info >= (3, 0):
+            output = output.decode('utf8')
 
         return output

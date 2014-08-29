@@ -6,6 +6,7 @@
 """
 
 import os
+import sys
 import subprocess
 
 from process import spawn
@@ -33,6 +34,8 @@ class PHPLint(object):
         args.append(self.filename)
         proc = spawn(args, stdout=PIPE, stderr=PIPE, cwd=os.getcwd())
         self.output, self.error = proc.communicate()
+        if sys.version_info >= (3, 0):
+            self.output = self.output.decode('utf8')
 
     def parse_errors(self):
         """Parse the output given by php -l
@@ -40,7 +43,7 @@ class PHPLint(object):
 
         errors = {'E': [], 'W': [], 'V': []}
         if not 'No syntax errors detected' in self.output:
-            split_lines = self.output.splitlines()
+            split_lines = str(self.output.splitlines())
             for i in range(len(split_lines) - 1):
                 if not split_lines[i]:
                     continue

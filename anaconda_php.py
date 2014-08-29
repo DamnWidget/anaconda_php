@@ -7,7 +7,7 @@
 
 from .plugin_version import anaconda_required_version
 
-from anaconda.version import version as anaconda_version
+from .anaconda_lib.anaconda_plugin import anaconda_version
 
 if anaconda_required_version > anaconda_version:
     raise RuntimeError(

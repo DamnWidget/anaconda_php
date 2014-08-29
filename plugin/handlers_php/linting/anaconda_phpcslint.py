@@ -6,6 +6,7 @@
 """
 
 import os
+import sys
 import logging
 import subprocess
 try:
@@ -57,6 +58,8 @@ class PHPCSLint(object):
         args.append(self.filename)
         proc = spawn(args, stdout=PIPE, stderr=PIPE, cwd=os.getcwd())
         self.output, self.error = proc.communicate()
+        if sys.version_info >= (3, 0):
+            self.output = self.output.decode('utf8')
 
     def parse_errors(self):
         """Parse the JSON output given by phpcs --report=json
@@ -66,14 +69,14 @@ class PHPCSLint(object):
         # phpcs errors are treated as warnings and warnings as violations
         errors_map = {'E': 'W', 'W': 'V'}
         try:
-            report = json.loads(self.output)
+            report = json.loads(str(self.output))
         except ValueError:
             msg = 'Cant decode JSON, string was:\n'.format(self.output)
             logging.info(msg)
             print(msg)
 
         if report['totals']['errors'] + report['totals']['warnings'] > 0:
-            for error_msg in report['files'].values()[0]['messages']:
+            for error_msg in list(report['files'].values())[0]['messages']:
                 errors[errors_map[error_msg['type'][0]]].append({
                     'line': error_msg['line'],
                     'offset': error_msg['column'],

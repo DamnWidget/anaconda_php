@@ -5,10 +5,10 @@
 from functools import partial
 
 from lib import anaconda_handler
-from linting.anaconda_phpmess import PHPMess
-from linting.anaconda_phplint import PHPLint
-from linting.anaconda_phpcslint import PHPCSLint
-from commands import PHPLinter, PHPCSLinter, PHPMessChecker
+from .linting.anaconda_phpmess import PHPMess
+from .linting.anaconda_phplint import PHPLint
+from .linting.anaconda_phpcslint import PHPCSLint
+from .commands import PHPLinter, PHPCSLinter, PHPMessChecker
 
 
 class PHPLintHandler(anaconda_handler.AnacondaHandler):

@@ -9,8 +9,8 @@ import sublime
 import sublime_plugin
 
 from ..anaconda_lib.helpers import get_settings
-from anaconda.anaconda_lib.helpers import is_code
-from anaconda.anaconda_lib.progress_bar import ProgressBar
+from ..anaconda_lib.anaconda_plugin import is_code
+from ..anaconda_lib.anaconda_plugin import ProgressBar
 from ..anaconda_lib.anaconda_plugin import Worker, Callback
 
 

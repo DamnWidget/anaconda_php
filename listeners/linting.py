@@ -4,8 +4,7 @@
 
 
 from ..anaconda_lib.sublime import run_linter
-
-from anaconda.listeners import linting
+from ..anaconda_lib.anaconda_plugin import linting
 
 
 class BackgroundLinter(linting.BackgroundLinter):

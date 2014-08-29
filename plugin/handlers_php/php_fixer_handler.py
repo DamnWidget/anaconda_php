@@ -4,7 +4,7 @@
 
 from lib import anaconda_handler
 
-from commands import PHPCSFixer
+from .commands import PHPCSFixer
 
 
 class PHPFixerHandler(anaconda_handler.AnacondaHandler):

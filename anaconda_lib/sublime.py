@@ -6,8 +6,7 @@ from functools import partial
 
 import sublime as st3_sublime
 
-from .helpers import get_settings
-from anaconda.anaconda_lib.helpers import active_view
+from .helpers import get_settings, active_view
 from .anaconda_plugin import anaconda_sublime, Worker, Callback
 
 

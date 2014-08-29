@@ -6,6 +6,7 @@
 """
 
 import os
+import sys
 import subprocess
 
 from process import spawn
@@ -44,6 +45,8 @@ class PHPMess(object):
         args.append(self.filename)
         proc = spawn(args, stdout=PIPE, stderr=PIPE, cwd=os.getcwd())
         self.output, self.error = proc.communicate()
+        if sys.version_info >= (3, 0):
+            self.output = self.output.decode('utf8')
 
     def parse_errors(self):
         """Parse the JSON output given by phpcs --report=json
