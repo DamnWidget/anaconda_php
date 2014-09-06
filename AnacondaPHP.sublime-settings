@@ -14,6 +14,7 @@
     "use_phplint": true,    // php -l (linter)
     "use_phpcs": true,      // phpcs
     "use_phpmess": true,    // phpmd
+    "use_phpcpd": true      // phpcpd
 
     /*
         phpcs standard to use
@@ -115,5 +116,40 @@
 
             'phpcs_fixer_additional_arguments': ['--ansi']
     */
-    "phpcs_fixer_additional_arguments": ["--no-interaction"]
+    "phpcs_fixer_additional_arguments": ["--no-interaction"],
+
+    /*
+        phpcpd verbosity level
+
+        you can configure the verbosity level of the phpcpd setting the value
+        of this option with a numeric value between 0 and 3
+    */
+    "phpcpd_verbosity_level": 0,
+
+    /*
+        phpcpd minimum copy and paste lines threshold
+
+        adjust this setting to increase or decrement the minimum number of
+        copy and paste lines that are considered a violation
+    */
+    "phpcpd_min_lines": 5,
+
+    /*
+        phpcpd minimum repeated tokens
+
+        adjust this setting to increase or decrement the mnimum number of
+        copy and paste tokens that are considered a violation
+    */
+    "phpcpd_min_tokens": 70,
+
+    /*
+        phpcpd additional arguments
+
+        anaconda allows you to configure whatever option that you want to
+        use with phpcpd adding it to this list in the following
+        format:
+
+            'phpcpd_additional_arguments': ['--ansi']
+    */
+    "phpcpd_additional_arguments": []
 }
