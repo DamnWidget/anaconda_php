@@ -1,4 +1,4 @@
 Changes in 0.1.3
 ================
 
- - Added PHP Copy & Paste Code Detector for linting and standalone command
+ - Windows was raising this error "unexpected TC_STRING in Unknown" because it can't parse the phplint command line, fixed

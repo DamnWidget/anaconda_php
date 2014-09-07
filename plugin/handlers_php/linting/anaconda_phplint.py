@@ -30,7 +30,9 @@ class PHPLint(object):
         """Execute the linting process
         """
 
-        args = ['php', '-l', '-n', '-d dislay_errors=On -d log_errors=Off']
+        args = [
+            'php', '-l', '-n', '-d', 'dislay_errors=On', '-d', 'log_errors=Off'
+        ]
         args.append(self.filename)
         proc = spawn(args, stdout=PIPE, stderr=PIPE, cwd=os.getcwd())
         self.output, self.error = proc.communicate()
