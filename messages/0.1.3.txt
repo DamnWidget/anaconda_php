@@ -1,0 +1,4 @@
+Changes in 0.1.3
+================
+
+ - Added PHP Copy & Paste Code Detector for linting and standalone command
