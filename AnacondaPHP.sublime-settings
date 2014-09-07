@@ -14,7 +14,7 @@
     "use_phplint": true,    // php -l (linter)
     "use_phpcs": true,      // phpcs
     "use_phpmess": true,    // phpmd
-    "use_phpcpd": true      // phpcpd
+    "use_phpcpd": true,     // phpcpd
 
     /*
         phpcs standard to use

@@ -8,7 +8,7 @@ from lib import anaconda_handler
 from .linting.anaconda_phpmess import PHPMess
 from .linting.anaconda_phplint import PHPLint
 from .linting.anaconda_phpcslint import PHPCSLint
-from .commands import PHPLinter, PHPCSLinter, PHPMessChecker
+from .commands import PHPLinter, PHPCSLinter, PHPMessChecker, PHPCPD
 
 
 class PHPLintHandler(anaconda_handler.AnacondaHandler):
@@ -24,7 +24,9 @@ class PHPLintHandler(anaconda_handler.AnacondaHandler):
         self.debug = debug
         self.callback = callback
         self.command = command
-        self._linters = {'phplint': True, 'phpcs': True, 'phpmess': True}
+        self._linters = {
+            'phplint': True, 'phpcs': True, 'phpmess': True, 'phpcpd': True
+        }
         self._errors = []
         self._failures = []
 
@@ -80,6 +82,15 @@ class PHPLintHandler(anaconda_handler.AnacondaHandler):
             self.uid, self.vid, PHPMess, settings, code, filename
         )
 
+    def phpcpd(self, settings, code=None, filename=None):
+        """Run the phpcpd linter
+        """
+
+        PHPCPD(
+            partial(self._normalize, settings),
+            self.uid, self.vid, filename, settings, lint=True
+        )
+
     def _normalize(self, settings, data):
         """Normalize linters data before to merge
         """
@@ -108,6 +119,7 @@ class PHPLintHandler(anaconda_handler.AnacondaHandler):
         self._linters['phplint'] = settings.get('use_phplint')
         self._linters['phpcs'] = settings.get('use_phpcs')
         self._linters['phpmess'] = settings.get('use_phpmess')
+        self._linters['phpcpd'] = settings.get('use_phpcpd')
 
     def _merge(self, lint_result):
         """Merge the given linter result

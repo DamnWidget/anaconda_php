@@ -28,6 +28,7 @@ def run_linter(view=None):
         'use_phpcs': get_settings(view, 'use_phpcs', True),
         'use_phpmd': get_settings(view, 'use_phpmd', True),
         'use_phplint': get_settings(view, 'use_phplint', True),
+        'use_phpcpd': get_settings(view, 'use_phpcpd', True),
         'phpcs_severity': get_settings(view, 'phpcs_severity', 1),
         'phpcs_standard': get_settings(view, 'phpcs_standard', 'PRS2'),
         'phpcs_tab2spaces': get_settings(view, 'phpcs_tab2spaces', True),

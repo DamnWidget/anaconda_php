@@ -731,7 +731,7 @@ class PHP_CodeSniffer_File
      *
      * @return void
      */
-    public function addError($error, $stackPtr, $code='', $data=array(), $severity=0)
+    public function addError($error, $stackPtr, $code = '', $data = array(), $severity = 0)
     {
         // Work out which sniff generated the error.
         if (substr($code, 0, 9) === 'Internal.') {

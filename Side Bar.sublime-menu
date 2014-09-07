@@ -1,0 +1,14 @@
+[
+    {
+        "caption": "Anaconda",
+        "id": "anaconda_commands",
+        "children": [
+            {
+                "caption": "Detect PHP Copy & Paste Code Blocks",
+                "command": "anaconda_phpcpd",
+                "args": {"paths": []}
+
+            }
+        ]
+    }
+]

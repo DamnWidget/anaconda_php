@@ -7,6 +7,10 @@
             {
                 "command": "anaconda_php_fix",
                 "caption": "Fix PHP Document Style"
+            },
+            {
+                "command": "anaconda_phpcpd",
+                "caption": "Detect PHP Copy & Paste Code Blocks"
             }
         ]
     }
