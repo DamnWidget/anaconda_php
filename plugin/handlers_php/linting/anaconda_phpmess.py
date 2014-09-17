@@ -34,7 +34,7 @@ class PHPMess(object):
         rules = ','.join(self.settings.get(
             'phpmd_ruleset', ['unusedcode', 'naming', 'codesize'])
         )
-        phpmd = os.path.join(os.path.dirname(__file__), 'phpmd/src/bin/phpmd')
+        phpmd = os.path.join(os.path.dirname(__file__), 'phpmd/phpmd.phar')
         args = [
             'php', '-d date.timezone=UTC', phpmd, self.filename, 'text', rules
         ]
