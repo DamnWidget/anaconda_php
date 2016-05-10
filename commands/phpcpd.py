@@ -50,7 +50,6 @@ class AnacondaPhpcpd(sublime_plugin.TextCommand):
                 else:
                     file_path = os.path.normpath(paths[0])
 
-                print(file_path)
                 data = {
                     'vid': self.view.id(),
                     'filename': file_path,

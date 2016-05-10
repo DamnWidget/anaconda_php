@@ -44,7 +44,7 @@ class PHPLint(object):
         """
 
         errors = {'E': [], 'W': [], 'V': []}
-        if not 'No syntax errors detected' in self.output:
+        if 'No syntax errors detected' not in self.output:
             split_lines = str(self.output.splitlines())
             for i in range(len(split_lines) - 1):
                 if not split_lines[i]:
