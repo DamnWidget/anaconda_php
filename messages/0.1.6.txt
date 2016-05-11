@@ -1,0 +1,4 @@
+Changes in 0.1.5
+================
+
+ - PHPMD source code replaced with PHPMD.phar file, that should solve proble #2 under Windows
