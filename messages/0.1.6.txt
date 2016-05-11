@@ -1,4 +1,4 @@
-Changes in 0.1.5
+Changes in 0.1.6
 ================
 
- - PHPMD source code replaced with PHPMD.phar file, that should solve proble #2 under Windows
+ - Updated the plugin to make it compatible with anaconda v1.4.25
