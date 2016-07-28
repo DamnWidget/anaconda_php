@@ -30,7 +30,7 @@ def run_linter(view=None):
         'use_phplint': get_settings(view, 'use_phplint', True),
         'use_phpcpd': get_settings(view, 'use_phpcpd', True),
         'phpcs_severity': get_settings(view, 'phpcs_severity', 1),
-        'phpcs_standard': get_settings(view, 'phpcs_standard', 'PRS2'),
+        'phpcs_standard': get_settings(view, 'phpcs_standard', 'PSR2'),
         'phpcs_tab2spaces': get_settings(view, 'phpcs_tab2spaces', True),
         'phpcs_no_warnings': get_settings(view, 'phpcs_no_warnings', False),
         'phpmd_ruleset': get_settings(view, 'phpmd_ruleset', ['unusedcode']),

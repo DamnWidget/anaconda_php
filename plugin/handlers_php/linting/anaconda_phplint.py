@@ -31,7 +31,7 @@ class PHPLint(object):
         """
 
         args = [
-            'php', '-l', '-n', '-d', 'dislay_errors=On', '-d', 'log_errors=Off'
+            'php', '-l', '-n', '-d', 'display_errors=On', '-d', 'log_errors=Off'
         ]
         args.append(self.filename)
         proc = spawn(args, stdout=PIPE, stderr=PIPE, cwd=os.getcwd())
@@ -45,12 +45,12 @@ class PHPLint(object):
 
         errors = {'E': [], 'W': [], 'V': []}
         if 'No syntax errors detected' not in self.output:
-            split_lines = str(self.output.splitlines())
+            split_lines = self.output.splitlines()
             for i in range(len(split_lines) - 1):
                 if not split_lines[i]:
                     continue
 
-                line_data = split_lines[i].split(':')[1].split(' on')
+                line_data = split_lines[i].split(':', 1)[1].split(' on')
                 errors['E'].append({
                     'line': int(line_data[1].split(' line ')[1]),
                     'offset': 0,
