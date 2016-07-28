@@ -39,7 +39,7 @@ class PHPCSLint(object):
         args = [
             'php', phpcs, '--extensions=php,inc,lib,js,css', '--report=json',
             '--standard={0}'.format(
-                self.settings.get('phpcs_standard', 'PRS2')
+                self.settings.get('phpcs_standard', 'PSR2')
             )
         ]
         args.append('--severity={0}'.format(
